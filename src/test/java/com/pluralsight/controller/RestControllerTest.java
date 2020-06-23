@@ -33,10 +33,13 @@ public class RestControllerTest {
 		RestTemplate restTemplate = new RestTemplate();
 		Ride ride = new Ride();
 		
-		ride.setName("Round Valley Ride");
+		ride.setName("Sagebush Trail X");
 		ride.setDuration(38);
 		
-		restTemplate.put("http://localhost:8080/ride_tracker/ride", ride);
+		//restTemplate.put("http://localhost:8080/ride_tracker/ride", ride);
+		restTemplate.postForObject("http://localhost:8080/ride_tracker/ride", ride, Ride.class);
+		
+		System.out.println("Ride: "+ride.getId());
 		
 	}
 }
