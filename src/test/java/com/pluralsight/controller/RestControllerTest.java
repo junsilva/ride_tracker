@@ -42,4 +42,25 @@ public class RestControllerTest {
 		System.out.println("Ride: "+ride.getId());
 		
 	}
+	
+	@Test(timeout=3000)
+	public void updateRide() {
+		RestTemplate restTemplate = new RestTemplate();
+		
+		Ride ride = restTemplate.getForObject("http://localhost:8080/ride_tracker/ride/1", Ride.class);
+		
+		//restTemplate.postForObject("http://localhost:8080/ride_tracker/ride", ride, Ride.class);
+		
+		System.out.println("From getRide()");
+		System.out.println("Ride: "+ride.getId());
+		System.out.println("Ride: "+ride.getName());
+		System.out.println("Ride: "+ride.getDuration());
+		System.out.println("From updating duration, +5....");
+		
+		ride.setDuration(ride.getDuration()+5);
+		
+		restTemplate.put("http://localhost:8080/ride_tracker/ride", ride);
+		
+	}
+	
 }
