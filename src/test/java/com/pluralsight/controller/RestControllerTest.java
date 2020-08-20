@@ -79,4 +79,12 @@ public class RestControllerTest {
 		
 	}
 	
+	@Test(timeout=10000)
+	public void testException() {
+		RestTemplate restTemplate = new RestTemplate();
+		
+		restTemplate.getForObject("http://localhost:8080/ride_tracker/test", Ride.class);
+		
+	}
+	
 }
